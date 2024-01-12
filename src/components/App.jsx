@@ -8,6 +8,20 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const localContacts = localStorage.getItem('contacts');
+
+    if (localContacts) {
+      this.setState({ contacts: JSON.parse(localContacts) });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   handleRemoveContact = id => {
     const { contacts } = this.state;
 
