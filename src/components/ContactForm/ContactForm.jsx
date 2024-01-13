@@ -31,6 +31,11 @@ class ContactForm extends Component {
     };
 
     handlePushContact(contact);
+    this.clearForm();
+  };
+
+  clearForm = () => {
+    this.setState({ name: '', number: '' });
   };
 
   handleChangeName(e) {
